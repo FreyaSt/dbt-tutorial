@@ -6,6 +6,8 @@ name: 'jaffle_shop'
 version: '1.0.0'
 config-version: 2
 
+# Just a comment
+
 # require-dbt-version: 0.20.0
 # This setting configures which "profile" dbt uses for this project.
 profile: 'jaffle_shop'
