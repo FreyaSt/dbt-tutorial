@@ -6,7 +6,6 @@ name: 'jaffle_shop'
 version: '1.0.0'
 config-version: 2
 
-# Just a comment
 # require-dbt-version: 0.20.0
 # This setting configures which "profile" dbt uses for this project.
 profile: 'jaffle_shop'
@@ -43,3 +42,6 @@ vars:
   jira_using_versions: false # Disable if you do not have the version table, or if you do not want version related metrics reported
   jira_using_components: false # Disable if you do not have the component table, or if you do not want component related metrics reported
   jira_include_comments: false # this package aggregates issue comments so that you have a single view of all your comments in the jira__issue_enhanced table. This can cause limit errors if you have a large dataset. Disable to remove this functionality.
+  fivetran_log:
+    fivetran_log_using_transformations: false # this will disable all transformation + trigger_table logic
+    fivetran_log_using_triggers: false # this will disable only trigger_table logic
