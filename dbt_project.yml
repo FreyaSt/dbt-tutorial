@@ -1,47 +1,87 @@
 
-# Name your project! Project names should contain only lowercase characters
-# and underscores. A good package name should reflect your organization's
-# name or the intended use of these models
-name: 'jaffle_shop'
-version: '1.0.0'
+# # Name your project! Project names should contain only lowercase characters
+# # and underscores. A good package name should reflect your organization's
+# # name or the intended use of these models
+# name: 'jaffle_shop'
+# version: '1.0.0'
+# config-version: 2
+
+# # require-dbt-version: 0.20.0
+# # This setting configures which "profile" dbt uses for this project.
+# profile: 'jaffle_shop'
+
+# # These configurations specify where dbt should look for different types of files.
+# # The `source-paths` config, for example, states that models in this project can be
+# # found in the "models/" directory. You probably won't need to change these!
+# source-paths: ["models"]
+# analysis-paths: ["analysis"]
+# test-paths: ["tests"]
+# data-paths: ["data"]
+# macro-paths: ["macros"]
+# snapshot-paths: ["snapshots"]
+
+# target-path: "target_test"  # directory which will store compiled SQL files
+# clean-targets:         # directories to be removed by `dbt clean`
+#     - "target"
+#     - "dbt_modules"
+
+
+# # Configuring models
+# # Full documentation: https://docs.getdbt.com/docs/configuring-models
+
+# # In this example config, we tell dbt to build all models in the example/ directory
+# # as tables. These settings can be overridden in the individual model files
+# # using the `{{ config(...) }}` macro.
+# models:
+#   jaffle_shop:
+#       # Applies to all files under models/example/
+#       +materialized: table
+
+# vars:
+#   jira_using_sprints: false # Disable if you do not have the sprint table, or if you do not want sprint related metrics reported
+#   jira_using_versions: false # Disable if you do not have the version table, or if you do not want version related metrics reported
+#   jira_using_components: false # Disable if you do not have the component table, or if you do not want component related metrics reported
+#   jira_include_comments: false # this package aggregates issue comments so that you have a single view of all your comments in the jira__issue_enhanced table. This can cause limit errors if you have a large dataset. Disable to remove this functionality.
+#   fivetran_log:
+#     fivetran_log_using_transformations: false # this will disable all transformation + trigger_table logic
+#     fivetran_log_using_triggers: false # this will disable only trigger_table logic
+
+#     name: 'ad_reporting'
+profile: 'ad_reporting'
+version: '0.5.1'
 config-version: 2
 
-# require-dbt-version: 0.20.0
-# This setting configures which "profile" dbt uses for this project.
-profile: 'jaffle_shop'
-
-# These configurations specify where dbt should look for different types of files.
-# The `source-paths` config, for example, states that models in this project can be
-# found in the "models/" directory. You probably won't need to change these!
-source-paths: ["models"]
-analysis-paths: ["analysis"]
-test-paths: ["tests"]
-data-paths: ["data"]
-macro-paths: ["macros"]
-snapshot-paths: ["snapshots"]
-
-target-path: "target_test"  # directory which will store compiled SQL files
-clean-targets:         # directories to be removed by `dbt clean`
-    - "target"
-    - "dbt_modules"
-
-
-# Configuring models
-# Full documentation: https://docs.getdbt.com/docs/configuring-models
-
-# In this example config, we tell dbt to build all models in the example/ directory
-# as tables. These settings can be overridden in the individual model files
-# using the `{{ config(...) }}` macro.
-models:
-  jaffle_shop:
-      # Applies to all files under models/example/
-      +materialized: table
+require-dbt-version: [">=0.20.0"]
 
 vars:
-  jira_using_sprints: false # Disable if you do not have the sprint table, or if you do not want sprint related metrics reported
-  jira_using_versions: false # Disable if you do not have the version table, or if you do not want version related metrics reported
-  jira_using_components: false # Disable if you do not have the component table, or if you do not want component related metrics reported
-  jira_include_comments: false # this package aggregates issue comments so that you have a single view of all your comments in the jira__issue_enhanced table. This can cause limit errors if you have a large dataset. Disable to remove this functionality.
-  fivetran_log:
-    fivetran_log_using_transformations: false # this will disable all transformation + trigger_table logic
-    fivetran_log_using_triggers: false # this will disable only trigger_table logic
+  ad_reporting__pinterest_enabled: false
+  ad_reporting__microsoft_ads_enabled: true
+  ad_reporting__linkedin_ads_enabled: false
+  ad_reporting__google_ads_enabled: true
+  ad_reporting__twitter_ads_enabled: false
+  ad_reporting__facebook_ads_enabled: true
+  ad_reporting__snapchat_ads_enabled: false
+
+models:
+  ad_reporting:
+    +materialized: view
+  
+  pinterest:
+    enabled: false
+  pinterest_source:
+    enabled: false
+  
+  linkedin:
+    enabled: false
+  linkedin_source:
+    enabled: false
+  
+  twitter_ads:
+    enabled: false
+  twitter_ads_source:
+    enabled: false
+
+  snapchat_ads:
+    enabled: false
+  snapchat_ads_source:
+    enabled: false
