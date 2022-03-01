@@ -46,7 +46,7 @@
 #     fivetran_log_using_transformations: false # this will disable all transformation + trigger_table logic
 #     fivetran_log_using_triggers: false # this will disable only trigger_table logic
 
-#     name: 'ad_reporting'
+name: 'ad_reporting'
 profile: 'ad_reporting'
 version: '0.5.1'
 config-version: 2
