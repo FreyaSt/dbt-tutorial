@@ -2,13 +2,13 @@
 # # Name your project! Project names should contain only lowercase characters
 # # and underscores. A good package name should reflect your organization's
 # # name or the intended use of these models
-# name: 'jaffle_shop'
-# version: '1.0.0'
-# config-version: 2
+name: 'jaffle_shop'
+version: '1.0.0'
+config-version: 2
 
-# # require-dbt-version: 0.20.0
+require-dbt-version: 0.20.0
 # # This setting configures which "profile" dbt uses for this project.
-# profile: 'jaffle_shop'
+profile: 'jaffle_shop'
 
 # # These configurations specify where dbt should look for different types of files.
 # # The `source-paths` config, for example, states that models in this project can be
@@ -46,42 +46,3 @@
 #     fivetran_log_using_transformations: false # this will disable all transformation + trigger_table logic
 #     fivetran_log_using_triggers: false # this will disable only trigger_table logic
 
-name: 'ad_reporting'
-profile: 'ad_reporting'
-version: '0.5.1'
-config-version: 2
-
-require-dbt-version: [">=0.20.0"]
-
-vars:
-  ad_reporting__pinterest_enabled: false
-  ad_reporting__microsoft_ads_enabled: true
-  ad_reporting__linkedin_ads_enabled: false
-  ad_reporting__google_ads_enabled: true
-  ad_reporting__twitter_ads_enabled: false
-  ad_reporting__facebook_ads_enabled: true
-  ad_reporting__snapchat_ads_enabled: false
-
-models:
-  ad_reporting:
-    +materialized: view
-  
-  pinterest:
-    enabled: false
-  pinterest_source:
-    enabled: false
-  
-  linkedin:
-    enabled: false
-  linkedin_source:
-    enabled: false
-  
-  twitter_ads:
-    enabled: false
-  twitter_ads_source:
-    enabled: false
-
-  snapchat_ads:
-    enabled: false
-  snapchat_ads_source:
-    enabled: false
